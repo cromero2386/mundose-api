@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Http\Resources\ProvinceResource;
 
 class ProvinceController extends Controller
 {
@@ -13,7 +12,7 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        //
+        return ProvinceResource::collection(Province::all());
     }
 
     /**
@@ -21,6 +20,6 @@ class ProvinceController extends Controller
      */
     public function show(Province $province)
     {
-        //
+        return new ProvinceResource($province);
     }
 }
