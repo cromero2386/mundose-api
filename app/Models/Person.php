@@ -11,13 +11,13 @@ class Person extends Model
     protected $table = 'people';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'firtname',
+        'firstname',
         'lastname',
         'email',
         'province_id'
     ];
     public function province()
     {
-        return $this->belongsTo(Person::class, 'province_id', 'id');
+        return $this->belongsTo(Province::class, 'province_id', 'id');
     }
 }

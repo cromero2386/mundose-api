@@ -26,6 +26,6 @@ Route::get('get-province/{province}', [ProvinceController::class, 'show']);
 // Person routes
 Route::get('get-people', [PersonController::class, 'index']);
 Route::get('get-person/{person}', [PersonController::class, 'show']);
-Route::post('set-people', [PersonController::class, 'store']);
+Route::post('set-person', [PersonController::class, 'store']);
 Route::put('update-person/{person}', [PersonController::class, 'update']);
 Route::put('delete-person/{person}', [PersonController::class, 'destroy']);
