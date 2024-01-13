@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use App\Http\Resources\PersonResource;
+use App\Http\Requests\StorePersonRequest;
 
 class PersonController extends Controller
 {
@@ -17,17 +18,9 @@ class PersonController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePersonRequest $request)
     {
         //
     }
@@ -38,14 +31,6 @@ class PersonController extends Controller
     public function show(Person $person)
     {
         return new PersonResource($person);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Person $person)
-    {
-        //
     }
 
     /**
