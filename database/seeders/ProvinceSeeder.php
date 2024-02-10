@@ -16,9 +16,9 @@ class ProvinceSeeder extends Seeder
         $response = Http::get('https://apis.datos.gob.ar/georef/api/provincias');
         collect($response->object()->provincias)->map(function (object $province) {
             Province::updateOrCreate([
-                'id' => $province->id
+                'id' => $province->id,
             ], [
-                'name' => $province->nombre
+                'name' => $province->nombre,
             ]);
         });
     }
