@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
-use App\Http\Resources\PersonResource;
 use App\Http\Requests\StorePersonRequest;
+use App\Services\PersonService;
 
 class PersonController extends Controller
 {
+    public function __construct(
+        public PersonService $personService
+
+    ) {
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return PersonResource::collection(Person::all());
+        return $this->personService::getPersons();
     }
 
     /**
@@ -22,7 +27,7 @@ class PersonController extends Controller
      */
     public function store(StorePersonRequest $request)
     {
-        //
+        return $this->personService::storePerson($request);
     }
 
     /**
@@ -30,7 +35,7 @@ class PersonController extends Controller
      */
     public function show(Person $person)
     {
-        return new PersonResource($person);
+        return $this->personService::getPersonsById($person);
     }
 
     /**
