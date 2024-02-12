@@ -3,12 +3,12 @@
 namespace App\Services;
 
 use App\Models\Person;
-use Illuminate\Http\Request;
+use App\Http\Requests\PersonRequest;
 use App\Http\Resources\PersonResource;
 
 class PersonService
 {
-    public static function getPersons()
+    public static function getAllPersons()
     {
         return PersonResource::collection(Person::all());
     }
@@ -16,7 +16,7 @@ class PersonService
     {
         return new PersonResource($person);
     }
-    public static function storePerson(Request $person)
+    public static function createNewPerson(PersonRequest $person)
     {
         $person = Person::create([
             'firstname' => $person->firstname,
@@ -26,10 +26,15 @@ class PersonService
         ]);
         return new PersonResource($person);
     }
-    public static function updatePerson(int $person)
+    public static function updatePerson(PersonRequest $request, Person $person)
     {
+        $person->firstname = $request->firstname;
+        $person->lastname = $request->lastname;
+        $person->province_id = $request->province_id;
+        $person->save();
+        return new PersonResource($person);
     }
-    public static function deletePerson(int $person)
+    public static function deletePerson(Person $person)
     {
     }
 }
