@@ -36,5 +36,7 @@ class PersonService
     }
     public static function deletePerson(Person $person)
     {
+        $person->delete();
+        return new PersonResource($person);
     }
 }

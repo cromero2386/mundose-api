@@ -28,4 +28,4 @@ Route::get('get-people', [PersonController::class, 'index']);
 Route::get('get-person/{person}', [PersonController::class, 'show']);
 Route::post('set-person', [PersonController::class, 'store']);
 Route::put('update-person/{person}', [PersonController::class, 'update']);
-Route::put('delete-person/{person}', [PersonController::class, 'destroy']);
+Route::delete('delete-person/{person}', [PersonController::class, 'destroy']);
