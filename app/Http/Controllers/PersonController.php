@@ -9,7 +9,7 @@ use App\Http\Requests\PersonRequest;
 class PersonController extends Controller
 {
     public function __construct(
-        public PersonService $personService
+        protected PersonService $personService
 
     ) {
     }
