@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Person;
+use App\Mail\StorePersonEmail;
 use App\Http\Requests\PersonRequest;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\PersonResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -25,6 +27,10 @@ class PersonService
             'email' => $person->email,
             'province_id' => $person->province_id,
         ]);
+        // When create new person a send mail
+
+        self::sendMailCreatePerson($person);
+
         return new PersonResource($person);
     }
     public static function updatePerson(PersonRequest $request, Person $person): JsonResource
@@ -59,5 +65,14 @@ class PersonService
             // Handle the case where the deleted model was not found.
             throw new \Exception('No se encontró la persona eliminada para restaurar');
         }
+    }
+    public static function sendMailCreatePerson(Person $person)
+    {
+        $details = [
+            'name' => 'Se agrego: ' . $person->firstname . ', ' . $person->lastname,
+            'mje' => 'Bienvenido al sistema, pronto nos pondremos en contacto con usted...'
+        ];
+
+        Mail::to('cromero2386@gmail.com')->send(new StorePersonEmail($details));
     }
 }
