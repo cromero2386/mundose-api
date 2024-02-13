@@ -29,3 +29,5 @@ Route::get('get-person/{person}', [PersonController::class, 'show']);
 Route::post('set-person', [PersonController::class, 'store']);
 Route::put('update-person/{person}', [PersonController::class, 'update']);
 Route::delete('delete-person/{person}', [PersonController::class, 'destroy']);
+Route::get('get-people-trashed', [PersonController::class, 'getOnlyTrashed']);
+Route::put('restore-person-trashed/{id}', [PersonController::class, 'restoreTrashed']);
