@@ -52,4 +52,13 @@ class PersonController extends Controller
     {
         return $this->personService::deletePerson($person);
     }
+
+    public function getOnlyTrashed()
+    {
+        return $this->personService::onlyTrashedPersons();
+    }
+    public function restoreTrashed(Person $person, int $id)
+    {
+        return $this->personService::restoreTrashedPerson($person, $id);
+    }
 }
