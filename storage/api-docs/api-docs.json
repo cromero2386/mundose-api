@@ -1,0 +1,384 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example of crud for MundosE",
+        "description": "It has to create, read, update and delete people, also list provinces using the external API of argentina.gob.ar.",
+        "contact": {
+            "name": "Lic. Romero, Carlos Alberto",
+            "email": "cromero2386@gmail.com"
+        },
+        "license": {
+            "name": "GNU General Public License (GPL)",
+            "url": "https://www.gnu.org/philosophy/philosophy.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/get-people": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a list of people",
+                "operationId": "9d0d8a99018a00021d6bb615c4c40878",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "example": {
+                                                    "data": {
+                                                        "id": 1,
+                                                        "nombre": "pepe",
+                                                        "apellido": "pepe",
+                                                        "correo": "user@example.com",
+                                                        "provincia": {
+                                                            "id": 1,
+                                                            "nombre": "Bs As"
+                                                        },
+                                                        "created_at": "2024-02-17T16:16:12.729Z",
+                                                        "updated_at": "2024-02-17T16:16:12.729Z",
+                                                        "deleted_at": null
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/set-person": {
+            "post": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Adds a new person - with one of example",
+                "description": "Adds a new person",
+                "operationId": "a40b62c15047f2e648854ea351bb32c9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "firstname",
+                                    "lastname",
+                                    "email",
+                                    "province_id"
+                                ],
+                                "properties": {
+                                    "firstname": {
+                                        "type": "string"
+                                    },
+                                    "lastname": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+                                    },
+                                    "province_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "firstname": "Carlos",
+                                    "lastname": "Romero",
+                                    "email": "example@mail.com",
+                                    "province_id": 18
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "id": 0,
+                                        "nombre": "string",
+                                        "apellido": "string",
+                                        "correo": "user@example.com",
+                                        "provincia": {
+                                            "id": 0,
+                                            "nombre": "string"
+                                        },
+                                        "created_at": "2024-02-17T16:16:12.729Z",
+                                        "updated_at": "2024-02-17T16:16:12.729Z",
+                                        "deleted_at": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "message": "El correo ya esta registrado en la base",
+                                    "errors": {
+                                        "email": [
+                                            "El correo ya esta registrado en la base"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/get-person/{person}": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a person",
+                "description": "Get a person",
+                "operationId": "d8e2388f7320b1003fd1a579c9120cd2",
+                "parameters": [
+                    {
+                        "name": "person",
+                        "in": "path",
+                        "description": "Parameter with an examples",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "id": 1,
+                                        "nombre": "pepe",
+                                        "apellido": "pepe",
+                                        "correo": "user@example.com",
+                                        "provincia": {
+                                            "id": 1,
+                                            "nombre": "Bs As"
+                                        },
+                                        "created_at": "2024-02-17T16:16:12.729Z",
+                                        "updated_at": "2024-02-17T16:16:12.729Z",
+                                        "deleted_at": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error: Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "message": "No hay resultados para el parametro ingresado..."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/update-person/{person}": {
+            "put": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Updates a person",
+                "description": "Updates a person",
+                "operationId": "e5c9435d64f1a4948a1671e905490175",
+                "parameters": [
+                    {
+                        "name": "person",
+                        "in": "path",
+                        "description": "Parameter with an examples",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "firstname",
+                                    "lastname",
+                                    "email",
+                                    "province_id"
+                                ],
+                                "properties": {
+                                    "firstname": {
+                                        "type": "string"
+                                    },
+                                    "lastname": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+                                    },
+                                    "province_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "firstname": "Carlos",
+                                    "lastname": "Romero",
+                                    "email": "example@mail.com",
+                                    "province_id": 18
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "id": 1,
+                                        "nombre": "pepe",
+                                        "apellido": "pepe",
+                                        "correo": "user@example.com",
+                                        "provincia": {
+                                            "id": 1,
+                                            "nombre": "Bs As"
+                                        },
+                                        "created_at": "2024-02-17T16:16:12.729Z",
+                                        "updated_at": "2024-02-17T16:16:12.729Z",
+                                        "deleted_at": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error: Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "message": "No hay resultados para el parametro ingresado..."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/delete-person/{person}": {
+            "delete": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Delete a person",
+                "description": "Delete a person",
+                "operationId": "446738cb07dff8100b452fe7e2c82ebd",
+                "parameters": [
+                    {
+                        "name": "person",
+                        "in": "path",
+                        "description": "Parameter with an examples",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "id": 1,
+                                        "nombre": "pepe",
+                                        "apellido": "pepe",
+                                        "correo": "user@example.com",
+                                        "provincia": {
+                                            "id": 1,
+                                            "nombre": "Bs As"
+                                        },
+                                        "created_at": "2024-02-17T16:16:12.729Z",
+                                        "updated_at": "2024-02-17T16:16:12.729Z",
+                                        "deleted_at": "2024-02-17T16:16:12.729Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error: Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "message": "No hay resultados para el parametro ingresado..."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
