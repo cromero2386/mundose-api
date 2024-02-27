@@ -7,7 +7,19 @@ This repository presents a Laravel 10(API) project that uses Guzzle to get provi
 -   Go to the root directory of the project and execute the following command in console
 
 ```
-php artisan make:model Provice -mcr
+php artisan make:model Person -mcr
+```
+
+-   `m` This option indicates that a migration should be generated together with the model.
+-   `c` This option indicates that a controller should be generated together with the model.
+-   `r` This option indicates that a resource should be generated together with the model. It generates the structure of the basic functions in the controller.
+
+## How to install a library?
+
+-   For example if I want to install the Laravel Socialite package
+
+```
+composer require laravel/socialite
 ```
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
