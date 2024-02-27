@@ -15,10 +15,10 @@ This repository presents a Laravel 10(API) project that uses Guzzle to get provi
 
 1. Clone the project from [mundose-api](https://github.com/cromero2386/mundose-api.git)
 2. To clone run
-   2.1 `git clone https://github.com/cromero2386/mundose-api.git`
+    - `git clone https://github.com/cromero2386/mundose-api.git`
 3. Go to the root directory of the project:
-   3.1 Create and configure the necessary `.env` following the example of `.env.example`.
-   3.2 And run the command `composer install` to download the dependencies.
+    - Create and configure the necessary `.env` following the example of `.env.example`.
+    - And run the command `composer install` to download the dependencies.
 
 ### How to create a model, migrations and controller
 
