@@ -2,7 +2,25 @@
 
 This repository presents a Laravel 10(API) project that uses Guzzle to get provinces data from [apis.datos.gob](https://apis.datos.gob.ar/georef/api/provincias). It includes a list of provinces, CRUD of people and mailing with Mailtrap when registering.
 
-## How to create a model, migrations and controller
+## What's in the project?
+
+1. Models, Migrations, Seeder, Sending Mail
+2. CRUD of People
+3. Listing and restoring deleted person records
+4. Use of seeder with provinces
+5. Use of external APIs
+6. Example of Swagger in the controller people
+
+## Steps to use the project
+
+1. Clone the project from [mundose-api](https://github.com/cromero2386/mundose-api.git)
+2. To clone run
+   2.1 `git clone https://github.com/cromero2386/mundose-api.git`
+3. Go to the root directory of the project:
+   3.1 Create and configure the necessary `.env` following the example of `.env.example`.
+   3.2 And run the command `composer install` to download the dependencies.
+
+### How to create a model, migrations and controller
 
 -   Go to the root directory of the project and execute the following command in console
 
@@ -14,7 +32,7 @@ php artisan make:model Person -mcr
 -   `c` This option indicates that a controller should be generated together with the model.
 -   `r` This option indicates that a resource should be generated together with the model. It generates the structure of the basic functions in the controller.
 
-## How to install a library?
+### How to install a library?
 
 -   For example if I want to install the Laravel Socialite package
 
@@ -22,44 +40,10 @@ php artisan make:model Person -mcr
 composer require laravel/socialite
 ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Use of api.datos.gob.ar
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   In the file that is in database/seeders/ProvinceSeeder.php I obtain and perform the following:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
--   **[Vehikl](https://vehikl.com/)**
--   **[Tighten Co.](https://tighten.co)**
--   **[WebReinvent](https://webreinvent.com/)**
--   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
--   **[64 Robots](https://64robots.com)**
--   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
--   **[Cyber-Duck](https://cyber-duck.co.uk)**
--   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
--   **[Jump24](https://jump24.co.uk)**
--   **[Redberry](https://redberry.international/laravel/)**
--   **[Active Logic](https://activelogic.com)**
--   **[byte5](https://byte5.de)**
--   **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Get to url `https://apis.datos.gob.ar/georef/api/provincias`
+2. Makes a map of the response.
+3. Execute a laravel update or create to insert or update provinces.
