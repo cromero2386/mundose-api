@@ -10,7 +10,8 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://pin2-9wd7j7vp3-cromero2386s-projects.vercel.app",        
+        "APP_URL": "https://pin2-9wd7j7vp3-cromero2386s-projects.vercel.app",  
+        "APP_KEY":"base64:+NvSta60+Y0hJLP3UCrE9hWnP1hK4OlCYLQcXPuvc3s=",     
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
