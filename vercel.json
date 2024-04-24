@@ -9,9 +9,7 @@
         "src": "/(.*)",
         "dest": "/api/index.php"
     }],
-    "buildCommand": [
-        { "src": "vercel-build", "use": "@now/static-build" }
-    ],
+    "buildCommand": "vercel-build",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
