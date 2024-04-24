@@ -9,7 +9,7 @@
         "src": "/(.*)",
         "dest": "/api/index.php"
     }],
-    "builds": [
+    "buildCommand": [
         { "src": "vercel-build", "use": "@now/static-build" }
     ],
     "env": {
