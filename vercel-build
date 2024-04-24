@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+# Ejecutar las migraciones de Laravel
+php artisan migrate --force
+
+# Continuar con el despliegue normal
